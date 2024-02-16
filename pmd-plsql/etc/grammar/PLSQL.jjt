@@ -2710,7 +2710,7 @@ ASTForAllStatement ForAllStatement()  :
 	                     ( <INDICES> | <VALUES> ) <OF> Expression() // Add support for sparse collections
 	                     | Expression() [".." Expression()]
 			    )
-			    [ <SAVE> <EXCEPTIONS> ] SqlStatement(null,";")
+			    [ <SAVE> <EXCEPTIONS> ] ( InsertStatement() | UpdateStatement() | DeleteStatement() | SqlStatement(null, ";") )
       { return jjtThis ; }
 }
 
@@ -3021,7 +3021,7 @@ ASTCursorUnit CursorUnit()  :
     [ FormalParameters() ]
     [ <RETURN> Datatype() ]
     // cursor definition
-    [<IS> SelectStatement() ]
+    [<IS> ["("] SelectStatement() [")"] ]
     ";"
 
     { jjtThis.setImage(simpleNode.getImage()) ;  return jjtThis ; }
