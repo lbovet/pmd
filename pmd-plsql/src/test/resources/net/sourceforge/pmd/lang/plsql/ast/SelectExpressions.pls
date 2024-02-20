@@ -108,4 +108,20 @@ SELECT CASE
        INTO VAL
        FROM dual;
 END;
+
+SELECT last_name
+INTO some_record
+FROM some_table
+WHERE (salary + 2) > 1000000;
+
+SELECT last_name
+INTO some_record
+FROM some_table
+WHERE (salary + 2 > 1000000) AND department = 'IT';
+
+SELECT last_name
+INTO some_record
+FROM some_table
+WHERE ((salary + 2) > 1000000) AND department = 'IT';
+
 /
