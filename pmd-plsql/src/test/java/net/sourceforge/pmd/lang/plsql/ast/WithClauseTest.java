@@ -20,10 +20,13 @@ class WithClauseTest extends AbstractPLSQLParserTst {
         ASTInput input = plsql.parseResource("WithClause.pls");
 
         List<ASTSelectStatement> selectStatements = input.descendants(ASTSelectStatement.class).toList();
-        assertEquals(1, selectStatements.size());
+        assertEquals(2, selectStatements.size());
 
         assertNotNull(selectStatements.get(0).descendants(ASTWithClause.class).first());
         assertNotNull(selectStatements.get(0).descendants(ASTSelectList.class).first());
+
+        assertNotNull(selectStatements.get(1).descendants(ASTWithClause.class).first());
+        assertNotNull(selectStatements.get(1).descendants(ASTSelectList.class).first());
     }
 
     @Test

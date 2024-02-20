@@ -13,5 +13,12 @@ BEGIN
     INTO v_adt_id
     FROM titles adt;
 
+  FOR rec
+      IN (WITH titles as ( SELECT * FROM academic_titles )
+            SELECT adt.adt_id
+            FROM titles adt) LOOP
+    fn(rec);
+  END LOOP;
+
 END;
 /
