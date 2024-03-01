@@ -3953,6 +3953,7 @@ ASTView View()  :
   <VIEW> simpleNode = ObjectNameDeclaration()
   ["(" ViewColumn() ("," ViewColumn())* ")"]
   //### OF ... WITH OBJECT IDENTIFIER...
+  [ <BEQUEATH> ( <CURRENT_USER> | <DEFINER> ) ]
   <AS>
   Subquery()
   [ SubqueryRestrictionClause() ]
@@ -4771,6 +4772,7 @@ MORE :
 
 TOKEN [IGNORE_CASE]:
 {
+<BEQUEATH: "BEQUEATH"> |
 <DEFINER: "DEFINER"> |
 <CURRENT_USER: "CURRENT_USER"> |
 <SERIALLY_REUSABLE: "SERIALLY_REUSABLE"> |
